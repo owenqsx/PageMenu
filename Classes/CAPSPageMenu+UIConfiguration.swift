@@ -60,6 +60,8 @@ extension CAPSPageMenu {
                 configuration.centerMenuItems = value
             case let .hideTopMenuBar(value):
                 configuration.hideTopMenuBar = value
+            case let .autoLoadPage(value):
+                configuration.autoLoadPage = value
             }
         }
         
@@ -164,7 +166,7 @@ extension CAPSPageMenu {
         var index : CGFloat = 0.0
         
         for controller in controllerArray {
-            if index == 0.0 {
+            if index == 0.0 && configuration.autoLoadPage {
                 // Add first two controllers to scrollview and as child view controller
                 controller.viewWillAppear(true)
                 addPageAtIndex(0)
